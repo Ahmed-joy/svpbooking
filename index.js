@@ -69,5 +69,5 @@ app.get('/api/client/profile',auth(),(req,res)=>res.json({user:safeUser(req.user
 // IMPORTANT: No raw card PAN/CVV, third-party OTP, or automatic external exam booking endpoints are exposed.
 
 app.use('/api',(req,res)=>res.status(404).json({error:'This endpoint has not yet been migrated'}));
-const dir=path.dirname(fileURLToPath(import.meta.url));const dist=path.resolve(dir,'../dist');if(existsSync(dist)){app.use(express.static(dist));app.get('*',(req,res)=>res.sendFile(path.join(dist,'index.html')))}else app.get('/',(req,res)=>res.send('RAWAS API is running. Run npm run build to serve React.'));
+const dir=path.dirname(fileURLToPath(import.meta.url));const dist = path.resolve(dir, 'dist');if(existsSync(dist)){app.use(express.static(dist));app.get('*',(req,res)=>res.sendFile(path.join(dist,'index.html')))}else app.get('/',(req,res)=>res.send('RAWAS API is running. Run npm run build to serve React.'));
 const port=Number(process.env.PORT||3000);app.listen(port,'0.0.0.0',()=>console.log(`RAWAS listening on ${port}`));
